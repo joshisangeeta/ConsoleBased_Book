@@ -38,7 +38,7 @@ public class BookDAO {
 		for (Book b : booksDB.getBookSet()) {
 			if (b.getTitle().equals(name)) {
 				bookFound=b;
-				System.out.println(b);
+				//System.out.println(b);
 				break;
 			}
 		}

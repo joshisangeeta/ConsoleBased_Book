@@ -1,18 +1,23 @@
 package com.sj.ui;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
 import java.util.Set;
 import com.sj.dao.BookDAO;
+import com.sj.jdbc.dao.BookJDBCDAO;
+import com.sj.jdbc.dao.IDAOBook;
 import com.sj.model.Book;
 
-public class Admin {
+public class JdbcAdmin {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		int choice;
 		Scanner s = new Scanner(System.in);
-		BookDAO bookDao = new BookDAO();
+		
+		IDAOBook bookDao= new BookJDBCDAO();
+		//BookDAO bookDao = new BookDAO();
 		char c;
 
 		do {
@@ -27,14 +32,14 @@ public class Admin {
 			choice = s.nextInt();
 			switch (choice) {
 			case 1:
-			 Set <Book>books=	bookDao.viewAllBooks();
+			 List <Book>books=	bookDao.viewAllBooks();
 			 System.out.println(books);
 				break;
 			case 2:
 				System.out.println("enter the title of book");
 				String name = s.next();
-			    Optional<Book> book=bookDao.viewByname(name);
-			    System.out.println(book.get());
+			   // Optional<Book> book=bookDao.viewByname(name);
+			  //  System.out.println(book.get());
 				break;
 
 			case 3:
@@ -47,14 +52,14 @@ public class Admin {
 				System.out.println("enter the book price");
 				double price = s.nextDouble();
 				Book ib = new Book(id1, name1, author, price);
-				bookDao.insert(ib);
+			//	bookDao.insert(ib);
 
 				break;
 
 			case 4:
 				System.out.println("enter the id of the book you want to delete");
 				int id9 = s.nextInt();
-				bookDao.deleteBook(id9);
+			//	bookDao.deleteBook(id9);
 				break;
 
 			case 5:
@@ -63,7 +68,7 @@ public class Admin {
 				System.out.println("enter the new price");
 				double price1 = s.nextDouble();
 
-				bookDao.updatePrice(id5, price1);
+			//	bookDao.updatePrice(id5, price1);
 				System.out.println("updated successfully");
 				break;
 			case 6:
